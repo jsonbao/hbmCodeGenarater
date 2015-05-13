@@ -1,0 +1,50 @@
+package com.${domain}.model;
+
+import java.io.Serializable;
+
+//@auther generate by bruce
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+
+
+
+public class ${modelName} implements Serializable{
+
+
+private static final long serialVersionUID = 1L;
+
+#foreach($Property in $PropertyList)
+
+	private ${Property.Type} ${Property.Column};
+
+#end 
+
+#foreach($Property in $PropertyList)
+	#set ($namelen = ${Property.Name.length()}) 
+	public ${Property.Type} get${Property.Name.substring(0,1).toUpperCase()}${Property.Name.substring(1,$namelen)}() {
+		return ${Property.Column};	
+	}
+	
+	public void set${Property.Name.substring(0,1).toUpperCase()}${Property.Name.substring(1,$namelen)}(${Property.Type} ${Property.Column}) {
+		this.${Property.Column} = ${Property.Column};
+	}
+#end
+
+    @Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+}

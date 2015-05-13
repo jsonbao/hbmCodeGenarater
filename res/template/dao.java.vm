@@ -1,0 +1,69 @@
+package com.${domain}.dao;
+
+//@auther generate by bruce ${Date}
+
+import java.util.List;
+import java.util.Map;
+
+import com.${domain}.model.${modelName};
+import com.yunlu.utils.PageView;
+
+
+public interface ${modelName}Dao {
+	
+	
+	public ${modelName} add${modelName}(${modelName} ${modelName.toLowerCase()});
+
+	
+	public boolean delete${modelName}(String hql,Object...args);
+	
+	
+	public ${modelName} update${modelName}(${modelName} ${modelName.toLowerCase()});
+	
+	
+	public ${modelName} get${modelName}(int id);
+	
+	
+	public ${modelName} get${modelName}(String hql,Object...args);
+	/**
+	 * 
+	 * 名称：findByCondition <br/>
+	 * 描述：单表条件查询 <br/>
+	 * @param hql
+	 * @param args
+	 * @return List<${modelName}>
+	 */
+	public List<${modelName}> findByCondition(String hql,Object... args);
+	/**
+	 * 
+	 * 名称：findByPageView <br/>
+	 * 描述：单表分页查询 <br/>
+	 * @param pageview
+	 * @param hql
+	 * @param args
+	 * @return List<Map<String,Object>>
+	 */
+	public PageView<${modelName}> findByPageView(PageView<${modelName}> pageview,String hql,Object...args); 
+	/**
+	 * 
+	 * 名称：findBySQL <br/>
+	 * 描述：多表sql查询 <br/>
+	 * @param sql
+	 * @param args
+	 * @return List<Map<String,Object>>
+	 */
+	public List<Map<String,Object>> findBySQL(String sql,Object...args);
+	/**
+	 * 
+	 * 名称：findByPageViewSql <br/>
+	 * 描述：多表分页查询 <br/>
+	 * @param pageview
+	 * @param sql
+	 * @param args
+	 * @return PageView<Map<String,Object>>
+	 */
+	public PageView<Map<String,Object>>findByPageViewSql(PageView<${modelName}> pageview,String sql,Object...args);
+	
+	
+
+}

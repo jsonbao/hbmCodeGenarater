@@ -1,0 +1,96 @@
+#set ($bean = $modelName) 
+#set ($beanlen = $bean.length())
+#set ($Bean = $bean.substring(0,1).toUpperCase()+$bean.substring(1,$beanlen)) 
+
+package com.${domain}.manager.impl;
+
+//@auther generate by bruce
+
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import com.${domain}.model.$Bean;
+import com.${domain}.manager.${Bean}Manager;
+import com.${domain}.dao.${Bean}Dao;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.${domain}.utils.MyConstant;
+import com.${domain}.utils.PageView;
+import com.${domain}.utils.QueryResult;
+
+@Service("${bean}Manager")
+public class ${Bean}ManagerImpl implements ${Bean}Manager {
+
+    @Autowired
+	private ${Bean}Dao ${bean.toLowerCase()}Dao;
+
+@Override
+	public ${bean} add${bean}(${bean} ${Bean}) {
+		
+		return ${bean.toLowerCase()}Dao.add${bean}(${Bean});
+	}
+
+	@Override
+	public ${bean} update${bean}(${bean} ${Bean}) {
+		
+		return ${bean.toLowerCase()}Dao.update${bean}(${Bean});
+	}
+
+	@Override
+	public boolean delete${bean}(String hql, Object...args) {
+		
+		return ${bean.toLowerCase()}Dao.delete${bean}(hql, args);
+	}
+	
+	@Override
+	public ${bean} get${bean}(int id) {
+		
+		return ${bean.toLowerCase()}Dao.get${bean}(id);
+	}
+	
+	@Override
+	public ${bean} get${bean}(String hql, Object... args) {
+		
+		List<${bean}> list=${bean.toLowerCase()}Dao.findByCondition(hql, args);
+		if (list.size()>0) 
+			return list.get(0);
+		else 
+			return null;
+	}
+	
+	@Override
+	public List<${bean}> findByCondition(String hql,Object...args) {
+		
+		return ${bean.toLowerCase()}Dao.findByCondition(hql, args);
+	}
+	
+	@Override
+	public PageView<${bean}> findByPageView(PageView<${bean}> pageview,String hql,Object...args) {
+
+			return ${bean.toLowerCase()}Dao.findByPageView(pageview, hql, args);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> findBySQL(String sql, Object... args) {
+		
+		return ${bean.toLowerCase()}Dao.findBySQL(sql, args);
+	}
+
+
+	@Override
+	public PageView<Map<String, Object>> findByPageViewSql(
+			PageView<${bean}> pageview, String sql, Object... args) {
+
+		return ${bean.toLowerCase()}Dao.findByPageViewSql(pageview, sql, args);
+	}
+	
+}
+
